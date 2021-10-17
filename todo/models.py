@@ -3,16 +3,11 @@ from django.db import models
 from django.utils import timezone
 from todo import TaskStatusChoice
 
-
 class Employee(AbstractUser):
     # token = models.CharField("", max_length=255,)
 
     def __str__(self):
         return f'{self.username}'
-
-    # class Meta:
-    #     verbose_name = 'Администратор'
-    #     verbose_name_plural = 'Администраторы'
 
 
 class Task(models.Model):
