@@ -24,4 +24,4 @@ class Task(models.Model):
                                     choices=TaskStatusChoice.choices,
                                     default=TaskStatusChoice.NOT_STARTED
     )
-    deadline = models.DateField("Дедлайн", db_index=True, default=timezone.now, blank=True)
+    deadline = models.DateTimeField("Дедлайн", db_index=True, default=timezone.now, blank=True)
