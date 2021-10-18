@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from todo import TaskStatusChoice
 
+
 class Employee(AbstractUser):
     def __str__(self):
         return f'{self.username}'
