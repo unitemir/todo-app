@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
+    CreateAPIView,
 )
 from rest_framework.permissions import IsAuthenticated
 from .models import Employee, Task
@@ -35,3 +36,13 @@ class TaskDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = [IsOwnerTaskOrReadOnly, IsAuthenticated]
+
+
+class TaskCreateView(CreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        employee = self.request.user
+        return serializer.save(employee=employee)

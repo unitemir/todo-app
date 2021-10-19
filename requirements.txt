@@ -8,3 +8,4 @@ djangorestframework-simplejwt==4.3.0
 djoser==2.1.0
 requests==2.22.0
 PyJWT==1.7.1
+celery

@@ -22,6 +22,8 @@ class Task(models.Model):
                                     "Статус",
                                     max_length=255,
                                     choices=TaskStatusChoice.choices,
-                                    default=TaskStatusChoice.NOT_STARTED
+                                    default=TaskStatusChoice.NOT_STARTED,
+                                    null=False,
+                                    blank=False,
     )
-    deadline = models.DateTimeField("Дедлайн", db_index=True, default=timezone.now, blank=True)
+    deadline = models.DateTimeField("Дедлайн", db_index=True, default=timezone.now, null=False, blank=False)
