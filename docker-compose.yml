@@ -23,20 +23,20 @@ services:
     environment:
       DJANGO_SETTINGS_MODULE: choco.settings
 
-#  rabbitmq:
-#    image: 'rabbitmq:3.6-management-alpine'
-#    ports:
-#      - '15672:15672'
+  rabbitmq:
+    image: 'rabbitmq:3.6-management-alpine'
+    ports:
+      - '15672:15672'
 
-#  celery:
-#    command: celery -A core worker -B -l info
-#    working_dir: /code
-#    build: .
-#    volumes:
-#      - .:/code
-#    depends_on:
-#      - django
-#      - rabbitmq
-#    restart: on-failure
-#    environment:
-#      - DJANGO_SETTINGS_MODULE=core.settings
+  celery:
+    command: celery -A choco worker -B -l info
+    working_dir: /code
+    build: .
+    volumes:
+      - .:/code
+    depends_on:
+      - rabbitmq
+      - django
+    restart: on-failure
+    environment:
+      - DJANGO_SETTINGS_MODULE=choco.settings

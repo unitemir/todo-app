@@ -131,3 +131,17 @@ REST_FRAMEWORK = {
     ),
     'DATETIME_FORMAT': "%Y-%m-%d - %H:%M:%S",
 }
+
+# Celery
+CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq'
+CELERY_RESULT_BACKEND = 'amqp://'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+
+# Email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'my_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'my_password'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
