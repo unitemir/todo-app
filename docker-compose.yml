@@ -3,6 +3,7 @@ version: "3.9"
 services:
   db:
     image: postgres
+    container_name: todo_db
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
@@ -11,9 +12,10 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   django:
-    working_dir: /code
     build: ./
-    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    working_dir: /code
+    container_name: django
+    command: bash -c "python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:

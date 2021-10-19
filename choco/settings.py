@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -141,7 +141,7 @@ CELERY_TASK_SERIALIZER = 'json'
 
 # Email
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'my_email@gmail.com'
-EMAIL_HOST_PASSWORD = 'my_password'
+EMAIL_HOST_USER = os.getenv('EMAIL_ADDRESS')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
